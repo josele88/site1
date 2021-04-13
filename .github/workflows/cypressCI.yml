@@ -19,6 +19,6 @@ jobs:
       - name: Tests
         run: |
           echo ${{ github.ref }}
-          echo ${BASE_BRANCH}
+          echo ${{ github.base_ref }}
           echo $(git rev-list --left-right --count refs/heads/master...${{ github.ref }} | head -n1 | awk '{print $1;}')
 
