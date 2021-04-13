@@ -1,0 +1,19 @@
+name: Test execution
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    # let's make sure our tests pass on Chrome browser
+    name: Test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        run: |
+          echo ${GITHUB_REF}
+          x=$(git rev-list --left-right --count refs/heads/master...${GITHUB_REF} | head -n1 | awk '{print $1;}')
+          echo $x
