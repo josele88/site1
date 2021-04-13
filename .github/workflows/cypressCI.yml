@@ -21,4 +21,4 @@ jobs:
           echo ${{ github.ref }}
           echo ${{ github.base_ref }}
           echo ${{ github.head_ref }}
-          echo $(git rev-list --left-right --count refs/heads/${{ github.base_ref }}...refs/heads/${{ github.head_ref }} | head -n1 | awk '{print $1;}')
+          echo $(git rev-list --left-right --count origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | head -n1 | awk '{print $1;}')
