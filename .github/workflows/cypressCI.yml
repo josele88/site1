@@ -23,5 +23,9 @@ jobs:
           echo ${{ github.head_ref }}
           if [ $(git rev-list --left-right --count origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | head -n1 | awk '{print $1;}') == 1 ]
           then
-          echo "OKKK"
+          exit 1
           fi
+
+      - name: Tests2
+        run: |
+          echo "step 2"
