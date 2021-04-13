@@ -13,7 +13,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo ${GITHUB_REF}
-          x=$(git rev-list --left-right --count refs/heads/master...${GITHUB_REF} | head -n1 | awk '{print $1;}')
+          x=$(git rev-list --left-right --count refs/heads/master...${{ github.ref }} | head -n1 | awk '{print $1;}')
           echo $x
