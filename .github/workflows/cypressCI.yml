@@ -11,8 +11,7 @@ jobs:
     # let's make sure our tests pass on Chrome browser
     name: Test
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - name: Tests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
