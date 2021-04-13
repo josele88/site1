@@ -16,5 +16,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo ${{ github.ref }}
-          x = $(git rev-list --left-right --count refs/heads/master...${{ github.ref }} | head -n1 | awk '{print $1;}')
-          echo ${{ x }}
+          echo $(git rev-list --left-right --count refs/heads/master...${{ github.ref }} | head -n1 | awk '{print $1;}')
