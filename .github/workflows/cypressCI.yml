@@ -10,10 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     # let's make sure our tests pass on Chrome browser
     name: Test
-    steps:
-      - name: Tests
-        env:
+    env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        
+      - name: Tests
         run: |
           echo ${{ github.ref }}
-          echo ${{ git rev-list --left-right --count refs/heads/master...${{ github.ref }} | head -n1 | awk '{print $1;}' }}
+          echo $(git rev-list --left-right --count refs/heads/master...${{ github.ref }} | head -n1 | awk '{print $1;}')
+
